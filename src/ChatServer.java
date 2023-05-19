@@ -18,7 +18,7 @@ public class ChatServer{
     }
     public void doConnections(){
         try{
-        server = new ServerSocket(6556);
+        server = new ServerSocket(9001);
         MyThreadServer messageRouterThread = new MyThreadServer();
         messageRouterThread.start();
         while(true)
