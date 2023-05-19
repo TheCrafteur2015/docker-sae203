@@ -30,3 +30,7 @@ docker build -t <nom_de_l_image>
 ```bash
 docker run -p 9001:9001 <nom_de_l_image>
 ```
+
+## Utilisation du client
+
+- Téléchargez le fichier .class : [ChatClient](https://github.com/TheCrafteur2015/docker-sae203/releases/tag/Client)
