@@ -10,7 +10,7 @@ COPY ./src/ChatServer.java ./
 
 #WORKDIR /app/
 
-RUN javac ChatServer.java
+RUN javac ChatServer.java -encoding utf8
 
 EXPOSE 9001
 CMD ["java", "ChatServer"]
