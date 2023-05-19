@@ -14,7 +14,7 @@ public class ChatServer {
 	
 	public ChatServer() {
 		this.client = null;
-		this.clientList =  = new HashMap<>();
+		this.clientList = new HashMap<>();
 	}
 	
 	public static void main(String[] args) {
