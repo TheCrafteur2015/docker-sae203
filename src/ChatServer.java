@@ -67,6 +67,7 @@ class MyThreadServer extends Thread{
                             if(clientList.containsKey(toClientName)){
                                 os= new DataOutputStream(clientList.get(toClientName).getOutputStream());
                                 os.writeUTF( key + ": " + msg.substring(0,i));
+				System.out.println("@SERVER : " + key + ": " + msg.substring(0, i) + " to " + toClientName);
                             }
                             else{
                                 os= new DataOutputStream(clientList.get(key).getOutputStream());
