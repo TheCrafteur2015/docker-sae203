@@ -1,6 +1,6 @@
 # SAÉ 2.03 - Equipe 6
 
-* Gabriel Roche A2
+* Gabriel ROCHE - A2
 
 ## Présentation
 
