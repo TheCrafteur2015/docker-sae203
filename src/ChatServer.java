@@ -23,7 +23,7 @@ public class ChatServer {
 	}
 	public void connections() {
 		try {
-			server = new ServerSocket(6556);
+			server = new ServerSocket(9001);
 			ServerThread messageRouterThread = new ServerThread();
 			messageRouterThread.start();
 			while (true) {
