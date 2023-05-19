@@ -6,6 +6,8 @@ RUN apt-get update && \
 
 COPY ./src/ChatServer.java /app
 
+RUN mkdir /app
+
 WORKDIR /app
 
 RUN javac ChatServer.java
