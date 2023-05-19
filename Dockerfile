@@ -4,11 +4,11 @@ FROM debian:latest
 RUN apt-get update && \
     apt-get -y install openjdk-17-jdk openjdk-17-jre
 
-COPY ./src/ChatServer.java /app
+COPY ./src/ChatServer.java /app/
 
-RUN mkdir ./app
+RUN mkdir /app/
 
-WORKDIR /app
+WORKDIR /app/
 
 RUN javac ChatServer.java
 
