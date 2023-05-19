@@ -4,10 +4,8 @@ FROM debian:latest
 RUN apt-get update && apt-get install -y openjdk-11-jdk
 
 COPY ChatServer.java /app/
-COPY ChatClient.java /app/
 
 RUN javac /app/ChatServer.java -encoding utf8
-RUN javac /app/ChatClient.java -encoding utf8
 
 EXPOSE 9001
 CMD ["java", "-cp", "/app", "ChatServer"]
