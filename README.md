@@ -14,7 +14,7 @@ Ce projet a pour but de créer un chat multi-utilisateurs en java.
 
 ## Création de l'image
 
-- Clonez le répertoire courant à l'aide de la commande suivante :
+- Clonez le répertoire courant à l'aide de la commande suivante
 ```bash
 git clone git@github.com:TheCrafteur2015/docker-sae203.git
 ```
@@ -22,7 +22,7 @@ git clone git@github.com:TheCrafteur2015/docker-sae203.git
 ```bash
 cd docker-sae203
 ```
-- Créez l'image avec la commande suivante :
+- Créez l'image avec la commande suivante
 ```bash
 docker build -t <nom_de_l_image> 
 ```
