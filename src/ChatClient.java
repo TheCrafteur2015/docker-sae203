@@ -1,113 +1,119 @@
-/* 
-    Code Developed and Written by Paul P Joby 
-    Name :  ChatClient 
-    Version : 1.0.0
-*/
 import java.io.*;
 import java.net.*;
 
-public class ChatClient{
-    
-    public Socket client = null;
-    public DataOutputStream os;
-    public DataInputStream is;
-    public String clientName="@Client0";
-
-    public ChatClient(){
-
-    }
-   
-    public static void main(String[] args)throws IOException{
-        
-        ChatClient a = new ChatClient();
-        a.doConnections();
-
-    }
-    public void doConnections()throws IOException{
-        try{
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-        System.out.println("Enter Your Name <Please Dont use Space> : ");
-        clientName = "@" + br.readLine();
-        client = new Socket("127.0.0.1",6556);
-        os = new DataOutputStream(client.getOutputStream());
-        is = new DataInputStream(client.getInputStream());
-        //request as a client 
-        String request=clientName;
-        os.writeUTF(request);
-        String response = is.readUTF(); 
-        MyThreadRead read = new MyThreadRead(is);
-        MyThreadWrite write = new MyThreadWrite(os,clientName);
-        if(response.equals("#accepted")){
-            System.out.println("# Login Successful  as "+ clientName +" !");
-            System.out.println("Message Format");
-            System.out.println("--------------");
-            System.out.println("MESSAGE_BODY @to_username [Message Body may contain Space]");
-           //now run the thread
-            read.start();
-            write.start();
-
-            read.join();
-            write.join();
-        }     
-        else
-        {
-            System.out.println("# Could Not Connect To Server !");
-        }      
-         
-      }
-      catch(Exception e){
-        System.out.println("Error Occured Oops!");
-      }
-    }
+public class ChatClient {
+	
+	public Socket           client;
+	
+	public DataOutputStream os;
+	public DataInputStream  is;
+	
+	public String           clientName;
+	
+	public ChatClient() {
+		this.clientName = "@Client0";
+		this.client     = null;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		ChatClient a = new ChatClient();
+		a.doConnection();
+	
+	}
+	public void connection() throws IOException {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			
+			System.out.print("Entrez votre pseudo <sans espace> : ");
+			this.clientName = "@" + br.readLine();
+			
+			this.client = new Socket("127.0.0.1", 9001);
+			
+			this.os = new DataOutputStream(this.client.getOutputStream());
+			this.is = new DataInputStream(this.client.getInputStream());
+			
+			String request = this.clientName;
+			this.os.writeUTF(request);
+			
+			String reponse = this.is.readUTF(); 
+			
+			ReadThread  read  = new ReadThread(this.is);
+			WriteThread write = new WriteThread(this.os);
+			
+			if (reponse.equals("#accepted")) {
+				System.out.println("# Connection en tant que " + this.clientName + " réussie !");
+				System.out.println("Format de message");
+				System.out.println("-----------------");
+				System.out.println("CORPS_DU_MESSAGE @nom_d_utilisateur");
+				
+				read.start();
+				write.start();
+				
+				read.join();
+				write.join();
+			} else {
+				System.out.println("# La connexion au serveur a échoué !");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Une erreur est survenue !");
+		}
+		
+	}
+	
 }
-class MyThreadRead extends Thread{
-    DataInputStream is;
-    public MyThreadRead(DataInputStream i){
-           is=i;  
-    }
-    public void run()
-    {
-        try{
-            String msg=null;
-            while(true){
-                msg = is.readUTF();
-                if(msg != null)
-                    System.out.println(msg);
-                msg = null;
-            }
-         }
-         catch(Exception e){
 
-         }
-    }
-} 
-class MyThreadWrite extends Thread{
-    private DataOutputStream os;
-    public BufferedReader br;
-    public String clientName =  "@Client0";
-    public MyThreadWrite(DataOutputStream o,String name){
-           os=o;
-           clientName = name;
-           try{
-            InputStreamReader isr = new InputStreamReader(System.in);
-            br = new BufferedReader(isr);
-           }
-           catch(Exception e)
-           {
+class ReadThread extends Thread {
+	
+	private DataInputStream is;
+	
+	public MyThreadRead(DataInputStream i) {
+		this.is = i;  
+	}
+	
+	@Override
+	public void run() {
+		try{
+			String msg = null;
+			while (true) {
+				msg = this.is.readUTF();
+				if (msg != null)
+					System.out.println(msg);
+				msg = null;
+			}
+			
+		} catch (Exception e) {
+		}
+		
+	}
+	
+}
 
-           }
-    }
-    public void run()
-    {
-        try{
-            while(true){
-                String msg = br.readLine();
-                os.writeUTF(msg);
-            }
-        }
-        catch(Exception e){
-            
-        }
-    }
+class WriteThread extends Thread {
+	
+	private DataOutputStream os;
+	private BufferedReader   br;
+	
+	public MyThreadWrite(DataOutputStream o) {
+		this.os = o;
+		
+		try {
+			this.br = new BufferedReader(new InputStreamReader(System.in));
+		} catch (Exception e) {
+		}
+		
+	}
+	
+	@Override
+	public void run() {
+		try {
+			while (true) {
+				String msg = this.br.readLine();
+				this.os.writeUTF(msg);
+			}
+		} catch (Exception e) {
+		}
+		
+	}
+	
 }
