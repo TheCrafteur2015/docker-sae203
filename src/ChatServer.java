@@ -92,6 +92,7 @@ class ServerThread extends Thread {
 					}
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				//System.out.println("Server Recovering Initialization Failure ...");
 				//System.out.println("Server Up And Running ...");
 			}
