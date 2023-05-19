@@ -35,7 +35,7 @@ public class ChatServer {
 					String requestedClientName = is.readUTF();
 					clientList.put(requestedClientName,client);
 					os.writeUTF("#accepted");
-					messageRouterThread.clientList.put(requestedClientName,client);
+					messageRouterThread.put(requestedClientName, client);
 				}
 				
 			}
@@ -59,6 +59,10 @@ class ServerThread extends Thread {
 		this.clientList = new HashMap<>();
 		this.is = null;
 		this.os = null;
+	}
+	
+	public void put(String str, Socket so) {
+		this.clientList.put(str, so);
 	}
 	
 	public void run() {
