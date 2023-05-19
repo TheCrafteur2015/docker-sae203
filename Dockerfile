@@ -9,13 +9,3 @@ RUN javac /app/ChatServer.java -encoding utf8
 
 EXPOSE 9001
 CMD ["java", "-cp", "/app", "ChatServer"]
-
-#RUN apt-get update && \
-#    apt-get -y install openjdk-17-jdk openjdk-17-jre
-
-#COPY ./src/ChatServer.java ./
-
-#RUN javac ChatServer.java -encoding utf8
-
-#EXPOSE 9001
-#CMD ["java", "ChatServer"]
