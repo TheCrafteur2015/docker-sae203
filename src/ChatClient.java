@@ -17,7 +17,7 @@ public class ChatClient {
 	
 	public static void main(String[] args) throws IOException {
 		ChatClient a = new ChatClient();
-		a.doConnection();
+		a.connection();
 	
 	}
 	public void connection() throws IOException {
