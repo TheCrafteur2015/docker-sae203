@@ -67,7 +67,7 @@ class ReadThread extends Thread {
 	
 	private DataInputStream is;
 	
-	public MyThreadRead(DataInputStream i) {
+	public ReadThread(DataInputStream i) {
 		this.is = i;  
 	}
 	
@@ -94,7 +94,7 @@ class WriteThread extends Thread {
 	private DataOutputStream os;
 	private BufferedReader   br;
 	
-	public MyThreadWrite(DataOutputStream o) {
+	public WriteThread(DataOutputStream o) {
 		this.os = o;
 		
 		try {
