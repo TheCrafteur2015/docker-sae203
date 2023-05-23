@@ -33,7 +33,7 @@ docker run -p 9001:9001 <nom_de_l_image>
 
 ## Utilisation du client
 
-- Téléchargez le fichier .jar : [ChatClient](https://github.com/TheCrafteur2015/docker-sae203/releases/tag/Client)
+- Téléchargez le fichier .jar : [ChatClient.jar](https://github.com/TheCrafteur2015/docker-sae203/releases/tag/Client)
 - Exécutez le à l'aide de la commande suivante :
 ```bash
 java -jar ChatClient.jar
