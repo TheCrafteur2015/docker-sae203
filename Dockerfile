@@ -7,5 +7,6 @@ COPY ChatServer.java /app/
 
 RUN javac /app/ChatServer.java -encoding utf8
 
-EXPOSE 9001
 CMD ["java", "-cp", "/app", "ChatServer"]
+
+EXPOSE 9001
