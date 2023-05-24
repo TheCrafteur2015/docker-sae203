@@ -22,7 +22,7 @@ public class ChatServer {
         a.connections();
     }
 	
-    public void connections()c{
+    public void connections() {
         try {
 			server = new ServerSocket(9001);
 			MyThreadServer messageRouterThread = new MyThreadServer();
