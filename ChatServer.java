@@ -37,10 +37,10 @@ public class ChatServer {
 					os = new DataOutputStream(client.getOutputStream());
 					is = new DataInputStream(client.getInputStream());
 					
-					String requestedClientName = is.readUTF();
-					clientList.put(requestedClientName, client);
+					//String requestedClientName = is.readUTF();
+					//clientList.put(requestedClientName, client);
 					os.writeUTF("#accepted");
-					messageRouterThread.clientList.put(requestedClientName, client);
+					//messageRouterThread.clientList.put(requestedClientName, client);
 				} 
 			}
 		} catch(Exception e) {
