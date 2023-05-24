@@ -9,4 +9,4 @@ RUN javac /app/ChatServer.java -encoding utf8
 
 CMD ["java", "-cp", "/app", "ChatServer"]
 
-EXPOSE 9001
+EXPOSE 9001/tcp
