@@ -1,3 +1,13 @@
+<style>
+	h2 {
+		text-align: center;
+	}
+	img {
+		justify-content: center;
+		align-content: center;
+	}
+</style>
+
 # SAÉ 2.03 - Équipe 6
 
 Le but de cette SAÉ était de découvrir et d'utiliser les outils de gestion de projet informatique *GitHub* et *Docker*, servant à lancer des applications dans des conteneurs.
