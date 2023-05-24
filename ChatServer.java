@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ChatServer {
 	
-	private static final int PORT = 9001;
+	public static final int PORT = 9001;
 	
 	public ServerSocket        server;
 	public Socket              client;
@@ -63,12 +63,16 @@ class MyThreadServer extends Thread {
 		this.os = null;
 	}
 	
-    public void run() {
-        String msg = "";
-        int i = 0;
+	public void run() {
+		String msg = "";
+		int i = 0;
 		
-        System.out.println("Serveur de conversation en cours d'exécution sur l'adresse '" + InetAddress.getLocalHost() + "' et sur le port '" + ChatServer.PORT + "'  .....");
-        String toClientName = "";
+		try {
+			System.out.println("Serveur de conversation en cours d'exécution sur l'adresse '" + InetAddress.getLocalHost() + "' et sur le port '" + ChatServer.PORT + "'  .....");
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		String toClientName = "";
 		
 		while (true) {
 			try {
