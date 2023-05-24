@@ -4,13 +4,15 @@ import java.util.*;
 
 public class ChatServer {
 	
-    public ServerSocket        server;
-    public Socket              client;
+	private static final int PORT = 9001;
 	
-    public DataOutputStream    os;
-    public DataInputStream     is;
+	public ServerSocket        server;
+	public Socket              client;
 	
-    public Map<String, Socket> clientList;
+	public DataOutputStream    os;
+	public DataInputStream     is;
+	
+	public Map<String, Socket> clientList;
 	
 	public ChatServer() {
 		this.client = null;
@@ -24,7 +26,7 @@ public class ChatServer {
 	
     public void connections() {
         try {
-			server = new ServerSocket(9001);
+			server = new ServerSocket(PORT);
 			MyThreadServer messageRouterThread = new MyThreadServer();
 			messageRouterThread.start();
 			
@@ -42,7 +44,7 @@ public class ChatServer {
 				} 
 			}
 		} catch(Exception e) {
-			System.out.println("Error Occured!");
+			System.out.println("Une erreur est arrivée !");
 			e.printStackTrace(System.out);
 		}
 	}
@@ -65,7 +67,7 @@ class MyThreadServer extends Thread {
         String msg = "";
         int i = 0;
 		
-        System.out.println("Serveur de conversation en cours d'exécution .....");
+        System.out.println("Serveur de conversation en cours d'exécution sur l'adresse '" + InetAddress.getLocalHost() + "' et sur le port '" + PORT + "'  .....");
         String toClientName = "";
 		
 		while (true) {
