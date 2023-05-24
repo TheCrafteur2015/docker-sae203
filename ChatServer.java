@@ -33,6 +33,9 @@ public class ChatServer {
 			while (true) {
 				client = server.accept();
 				
+				// Impossible de se connecter depuis l'ordinateur sur le container
+				// Testé plusieurs programmes différents sans changements
+				
 				if (client != null) {
 					os = new DataOutputStream(client.getOutputStream());
 					is = new DataInputStream(client.getInputStream());
