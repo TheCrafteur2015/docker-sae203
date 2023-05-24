@@ -26,7 +26,7 @@ public class ChatServer {
 	
     public void connections() {
         try {
-			server = new ServerSocket(PORT);
+			server = new ServerSocket(ChatServer.PORT);
 			MyThreadServer messageRouterThread = new MyThreadServer();
 			messageRouterThread.start();
 			
@@ -67,7 +67,7 @@ class MyThreadServer extends Thread {
         String msg = "";
         int i = 0;
 		
-        System.out.println("Serveur de conversation en cours d'exécution sur l'adresse '" + InetAddress.getLocalHost() + "' et sur le port '" + PORT + "'  .....");
+        System.out.println("Serveur de conversation en cours d'exécution sur l'adresse '" + InetAddress.getLocalHost() + "' et sur le port '" + ChatServer.PORT + "'  .....");
         String toClientName = "";
 		
 		while (true) {
