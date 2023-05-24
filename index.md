@@ -1,3 +1,4 @@
+<head>
 <style>
 	h2 {
 		text-align: center;
@@ -7,6 +8,7 @@
 		align-content: center;
 	}
 </style>
+</head>
 
 # SAÉ 2.03 - Équipe 6
 
